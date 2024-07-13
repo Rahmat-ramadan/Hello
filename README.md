@@ -86,6 +86,73 @@
         .next-page-btn a:hover {
             background-color: #0056b3;
         }
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 1; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            background-color: rgb(0,0,0); 
+            background-color: rgba(0,0,0,0.4); 
+            padding-top: 60px; 
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 400px;
+            border-radius: 10px;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .login-btn {
+            background-color: #007BFF;
+            color: white;
+            padding: 5px 10px; /* Perubahan ukuran padding */
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            width: auto; /* Menghapus lebar 100% */
+            margin-top: 20px;
+        }
+        .login-btn:hover {
+            background-color: #0056b3;
+        }
+        .error-msg {
+            color: red;
+            margin-top: 10px;
+            text-align: center;
+        }
+        .modal-content div {
+            margin-bottom: 15px;
+        }
+        .modal-content label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .modal-content input {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
         @media (max-width: 600px) {
             .container {
                 padding: 10px 20px;
@@ -99,13 +166,12 @@
 </head>
 <body>
     <div class="container">
-        <h1>Biodata Rahmat Ramadan</h1>
+        <h1>Rahmat Ramadan</h1>
         
         <div class="profile-section">
-            <!-- Ganti 'profile.jpg' dengan URL atau path file foto profil Anda -->
             <img src="profile.jpg" alt="Foto Profil Rahmat Ramadan" class="profile-pic">
             <p class="profile-text">
-                Halo! Saya Rahmat Ramadan, lahir Di Jakarta pada Tanggal 27 November 2002. Saya tinggal di Jl.Walang, Koja, Jakarta Utara. Saya sangat menyukai desain, Diy dan menggambar manual, yang sering saya lakukan di waktu luang saya. Selain itu, saya juga suka berkreasi dengan kode program, khususnya dalam pengembangan web dan aplikasi Management Data. Berikut Rincian Profil Tentang Saya
+                Halo! Saya Rahmat Ramadan, biasa dipanggil Rahmat, lahir Di Jakarta pada Tanggal 27 November 2002. Saya tinggal di daerah Koja, Jakarta Utara. Saya sangat menyukai desain, Diy dan menggambar manual, yang sering saya lakukan di waktu luang saya. Selain itu, saya juga suka berkreasi dengan kode program, khususnya dalam aplikasi Management Data berbasis java Netbeans dan pengembangan web . Berikut Rincian Profil Tentang Saya
             </p>
         </div>
 
@@ -123,12 +189,14 @@
         </div>
 
         <div class="section">
-            <h2>Pengalaman Kerja</h2>
+            <h2>Pengalaman</h2>
             <ul>
                 <li>Freelance PT.Indo Arsip</li>
-                <li>Membuat Project Pembuatan Aplikasi Manajemen Data</li>
+				<li>Fulltime Barista</li>
+				<li>Magang PT. Anugrah Textile</li>
+                <li>Membuat Project Pembuatan Aplikasi Manajemen Data dan menyimpan data di database Mysql</li>
                 <li>Membuat Project Website Catalog Penjualan</li>
-                <li>Membuat Website Untuk Manajemen Data</li>
+                <li>Membuat Project Website Untuk Manajemen Data dan menyimpan data di database Mysql</li>
             </ul>
         </div>
 
@@ -146,6 +214,7 @@
         <div class="section">
             <h2>Hobi</h2>
             <ul>
+                <li>Diy</li>
                 <li>Desain</li>
                 <li>Menggambar Manual</li>
             </ul>
@@ -157,9 +226,77 @@
             <p><strong>Email:</strong> rahmatramadan077@gmail.com</p>
         </div>
 
-        <!-- Tombol untuk halaman berikutnya -->
+        <!-- Tombol untuk halaman sertifikat -->
         <div class="next-page-btn">
             <a href="sertifikat.html">Lihat Ijazah dan Sertifikat</a>
         </div>
+
+        <!-- Tombol untuk halaman galeri -->
+        <div class="next-page-btn">
+            <button class="login-btn" id="openLoginModal">Lihat Galeri</button>
+        </div>
     </div>
+
+    <!-- Modal Login -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeLoginModal">&times;</span>
+            <h2 style="text-align: center; color: #007BFF;">Login</h2>
+            <div>
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+
+            </div>
+            <div>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button class="login-btn" id="loginBtn">Login</button>
+            <div class="error-msg" id="errorMsg"></div>
+        </div>
+    </div>
+
+    <script>
+        // Get modal elements
+        var modal = document.getElementById("loginModal");
+        var btn = document.getElementById("openLoginModal");
+        var span = document.getElementById("closeLoginModal");
+        var loginBtn = document.getElementById("loginBtn");
+        var errorMsg = document.getElementById("errorMsg");
+
+        // Open the modal
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
+
+        // Close the modal
+        span.onclick = function() {
+            modal.style.display = "none";
+            errorMsg.textContent = ""; // Clear error message on close
+        }
+
+        // Close the modal when clicking outside of it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+                errorMsg.textContent = ""; // Clear error message on close
+            }
+        }
+
+        // Login button functionality
+        loginBtn.onclick = function() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+
+            // Simple validation (replace with real authentication logic)
+            if (username === "rahmat" && password === "rahmat123") {
+                alert("Welcome Rahmat!");
+                modal.style.display = "none";
+                // Redirect to gallery or perform another action
+                window.location.href = "galeri.html"; // Update with actual gallery URL
+            } else {
+                errorMsg.textContent = "Eaa.. Kamu Bukan Pemilik Akun!";
+            }
+        }
+    </script>
 </body>
