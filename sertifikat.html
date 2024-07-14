@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dokumen PDF</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f7ff; /* warna biru muda */
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .navbar {
+        width: 100%;
+        background-color: #1a73e8; /* warna biru google */
+        overflow: hidden;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px; /* added padding */
+    }
+
+    .navbar a {
+        float: left;
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 20px;
+        text-decoration: none;
+    }
+
+    .navbar a:hover, .dropdown:hover .dropbtn {
+        background-color: #0056b3;
+    }
+
+    .dropdown {
+        float: left;
+        overflow: hidden;
+    }
+
+    .dropdown .dropbtn {
+        font-family: Arial, sans-serif;
+        border: none;
+        outline: none;
+        color: white;
+        padding: 14px 20px;
+        background-color: inherit;
+        font-size: 16px;
+        margin: 0;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #ffffff; /* background warna putih */
+        min-width: 160px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+    }
+
+    .dropdown-content a {
+        float: none;
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        text-align: left;
+    }
+
+    .dropdown-content a:hover {
+        background-color: #ddd;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    .profile-pic {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-right: 10px; /* added margin */
+    }
+
+    .container {
+        text-align: center;
+        background-color: #ffffff; /* background warna putih */
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        max-width: 600px;
+        width: 90%;
+        margin-top: 20px;
+    }
+
+    h1 {
+        color: #1a73e8; /* warna biru google */
+    }
+
+    p {
+        color: #555;
+        line-height: 1.6;
+    }
+
+    .pdf-links a {
+        display: block;
+        color: #1a73e8;
+        text-decoration: none;
+        margin: 10px 0;
+        padding: 10px;
+        border: 1px solid #1a73e8;
+        border-radius: 5px;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    .pdf-links a:hover {
+        background-color: #1a73e8;
+        color: white;
+    }
+</style>
+</head>
+<body>
+    <div class="navbar">
+        <div>
+            <a href="biodata.html">Home</a>
+            <div class="dropdown">
+                <button class="dropbtn">Kontak 
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="https://wa.me/6289526260859" target="_blank">WhatsApp</a>
+                    <a href="https://drive.google.com/link2" target="_blank">Empty</a>
+                </div>
+            </div>
+        </div>
+        <div>
+            <img src="profile.jpg" alt="Foto Profil" class="profile-pic">
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>Dokumen PDF</h1>
+        <p>Berikut adalah beberapa dokumen PDF yang dapat Anda akses:</p>
+        <div class="pdf-links">
+            <a href="https://drive.google.com/drive/folders/1mktH5YUi2etBbwjHJkbfFVgWJ_dR1sTF" target="_blank">Tugas-tugas</a>
+            <a href="https://drive.google.com/file/d/2Y3Z4X5Y6Z7A8B9C0D1E2F3G4H5I6J7K/view" target="_blank">Sertifikat</a>
+            <a href="https://drive.google.com/file/d/17YD2efeRyrO7ZBkOZnnfxmFl-PTPtneo/view?usp=drivesdk" target="_blank">Data diri</a>
+            <a href="https://drive.google.com/file/d/4Y5Z6X7Y8Z9A0B1C2D3E4F5G6H7I8J9K/view" target="_blank">Proposal Penjualan</a>
+        </div>
+    </div>
+</body>
+</html>
