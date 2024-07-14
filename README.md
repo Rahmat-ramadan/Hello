@@ -1,302 +1,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Biodata Rahmat Ramadan</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <title>Main Menu</title>
     <style>
         body {
-            font-family: 'Roboto', sans-serif;
-            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            font-family: Arial, sans-serif;
+            background-image: url('main.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
             margin: 0;
             padding: 0;
-        }
-        .container {
-            max-width: 800px;
-            margin: 50px auto;
-            background: #fff;
-            padding: 20px 40px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-            border-radius: 10px;
-        }
-        h1 {
-            text-align: center;
-            color: #007BFF;
-            margin-bottom: 30px;
-            font-weight: 700;
-        }
-        .profile-section {
             display: flex;
-            align-items: center;
             flex-direction: column;
+            align-items: center;
+            height: 100vh;
         }
+
         .profile-pic {
-            display: block;
-            margin: 0 auto 20px;
             width: 150px;
             height: 150px;
             border-radius: 50%;
             object-fit: cover;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .profile-text {
-            text-align: center;
-            font-size: 1.1em;
-            color: #333;
-        }
-        .section {
-            margin-bottom: 25px;
-        }
-        .section h2 {
-            background-color: #007BFF;
-            color: #fff;
-            padding: 10px;
-            border-radius: 5px;
-            font-weight: 700;
-        }
-        .section p, .section ul {
-            margin: 10px 0;
-            padding-left: 20px;
-        }
-        .section ul {
-            list-style-type: disc;
-        }
-        .section ul li {
-            margin: 5px 0;
-        }
-        .contact-info {
-            text-align: center;
-        }
-        .contact-info p {
-            font-size: 1.1em;
-            margin: 5px 0;
-        }
-        .next-page-btn {
-            text-align: center;
             margin-top: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
         }
-        .next-page-btn a {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #007BFF;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
-        .next-page-btn a:hover {
-            background-color: #0056b3;
-        }
-        .modal {
-            display: none; 
-            position: fixed; 
-            z-index: 1; 
-            left: 0;
-            top: 0;
-            width: 100%; 
-            height: 100%; 
-            overflow: auto; 
-            background-color: rgb(0,0,0); 
-            background-color: rgba(0,0,0,0.4); 
-            padding-top: 60px; 
-        }
-        .modal-content {
-            background-color: #fefefe;
-            margin: 5% auto;
+
+        .container {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.8); /* background warna putih dengan transparansi */
             padding: 20px;
-            border: 1px solid #888;
-            width: 80%;
-            max-width: 400px;
             border-radius: 10px;
-        }
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-        }
-        .close:hover,
-        .close:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-        }
-        .login-btn {
-            background-color: #007BFF;
-            color: white;
-            padding: 5px 10px; /* Perubahan ukuran padding */
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-            width: auto; /* Menghapus lebar 100% */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px; /* Mengatur max-width menjadi lebih kecil */
+            width: 90%;
             margin-top: 20px;
         }
-        .login-btn:hover {
-            background-color: #0056b3;
+
+        h1 {
+            color: #1a73e8; /* warna biru google */
         }
-        .error-msg {
-            color: red;
-            margin-top: 10px;
-            text-align: center;
+
+        p {
+            color: #555;
+            line-height: 1.6;
         }
-        .modal-content div {
-            margin-bottom: 15px;
-        }
-        .modal-content label {
+
+        .pdf-links a {
             display: block;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-        .modal-content input {
-            width: 100%;
+            color: #1a73e8;
+            text-decoration: none;
+            margin: 10px 0;
             padding: 10px;
-            box-sizing: border-box;
-            border: 1px solid #ccc;
+            border: 1px solid #1a73e8;
             border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
         }
-        @media (max-width: 600px) {
-            .container {
-                padding: 10px 20px;
-            }
-            .section h2 {
-                font-size: 1.2em;
-                padding: 8px;
-            }
+
+        .pdf-links a:hover {
+            background-color: #1a73e8;
+            color: white;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Rahmat Ramadan</h1>
-        
-        <div class="profile-section">
-            <img src="profile.jpg" alt="Foto Profil Rahmat Ramadan" class="profile-pic">
-            <p class="profile-text">
-                Halo! Saya Rahmat Ramadan, biasa dipanggil Rahmat, lahir Di Jakarta pada Tanggal 27 November 2002. Saya tinggal di daerah Koja, Jakarta Utara. Saya sangat menyukai desain, Diy dan menggambar manual, yang sering saya lakukan di waktu luang saya. Selain itu, saya juga suka berkreasi dengan kode program, khususnya dalam aplikasi Management Data berbasis java Netbeans dan pengembangan web . Berikut Rincian Profil Tentang Saya
-            </p>
-        </div>
-
-        <div class="section">
-            <h2>Informasi Pribadi</h2>
-            <p><strong>Nama:</strong> Rahmat Ramadan</p>
-            <p><strong>Alamat:</strong> Jl.Walang, Koja, Jakarta Utara</p>
-            <p><strong>Tempat, Tanggal Lahir:</strong> Jakarta, 27 November 2002</p>
-        </div>
-
-        <div class="section">
-            <h2>Pendidikan</h2>
-            <p>SMK Jurusan Akuntansi</p>
-            <p>S1 Teknik Informatika</p>
-        </div>
-
-        <div class="section">
-            <h2>Pengalaman</h2>
-            <ul>
-                <li>Freelance PT.Indo Arsip</li>
-				<li>Fulltime Barista</li>
-				<li>Magang PT. Anugrah Textile</li>
-                <li>Membuat Project Pembuatan Aplikasi Manajemen Data dan menyimpan data di database Mysql</li>
-                <li>Membuat Project Website Catalog Penjualan</li>
-                <li>Membuat Project Website Untuk Manajemen Data dan menyimpan data di database Mysql</li>
-            </ul>
-        </div>
-
-        <div class="section">
-            <h2>Keahlian</h2>
-            <ul>
-                <li>HTML/CSS - Penguasaan dalam membuat dan menata halaman web</li>
-                <li>JavaScript - Kemampuan dalam membuat fungsi interaktif pada situs web</li>
-                <li>Java Netbeans - Membuat Aplikasi Management Data</li>
-                <li>Database Management - Pengetahuan tentang MySQL</li>
-                <li>Microsoft Office - Mampu Mengoperasikan Ms.Word, Ms.Excel, Ms.PowerPoint</li>
-            </ul>
-        </div>
-
-        <div class="section">
-            <h2>Hobi</h2>
-            <ul>
-                <li>Diy</li>
-                <li>Desain</li>
-                <li>Menggambar Manual</li>
-            </ul>
-        </div>
-
-        <div class="section contact-info">
-            <h2>Kontak</h2>
-            <p><strong>No HP:</strong> 089526260859</p>
-            <p><strong>Email:</strong> rahmatramadan077@gmail.com</p>
-        </div>
-
-        <!-- Tombol untuk halaman sertifikat -->
-        <div class="next-page-btn">
-            <a href="sertifikat.html">Lihat Ijazah dan Sertifikat</a>
-        </div>
-
-        <!-- Tombol untuk halaman galeri -->
-        <div class="next-page-btn">
-            <button class="login-btn" id="openLoginModal">Lihat Galeri</button>
+        <img src="main1.jpg" alt="Foto Profil" class="profile-pic">
+        <h1>Selamat Datang</h1>
+        <p>Pilih Menu akses :</p>
+        <div class="pdf-links">
+            <a href="biodata.html" target="_blank">Biodata</a>
+            <a href="catalog.html" target="_blank">Blog Pribadi</a>
         </div>
     </div>
-
-    <!-- Modal Login -->
-    <div id="loginModal" class="modal">
-        <div class="modal-content">
-            <span class="close" id="closeLoginModal">&times;</span>
-            <h2 style="text-align: center; color: #007BFF;">Login</h2>
-            <div>
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" required>
-
-            </div>
-            <div>
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
-            </div>
-            <button class="login-btn" id="loginBtn">Login</button>
-            <div class="error-msg" id="errorMsg"></div>
-        </div>
-    </div>
-
-    <script>
-        // Get modal elements
-        var modal = document.getElementById("loginModal");
-        var btn = document.getElementById("openLoginModal");
-        var span = document.getElementById("closeLoginModal");
-        var loginBtn = document.getElementById("loginBtn");
-        var errorMsg = document.getElementById("errorMsg");
-
-        // Open the modal
-        btn.onclick = function() {
-            modal.style.display = "block";
-        }
-
-        // Close the modal
-        span.onclick = function() {
-            modal.style.display = "none";
-            errorMsg.textContent = ""; // Clear error message on close
-        }
-
-        // Close the modal when clicking outside of it
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-                errorMsg.textContent = ""; // Clear error message on close
-            }
-        }
-
-        // Login button functionality
-        loginBtn.onclick = function() {
-            var username = document.getElementById("username").value;
-            var password = document.getElementById("password").value;
-
-            // Simple validation (replace with real authentication logic)
-            if (username === "rahmat" && password === "rahmat123") {
-                alert("Welcome Rahmat!");
-                modal.style.display = "none";
-                // Redirect to gallery or perform another action
-                window.location.href = "galeri.html"; // Update with actual gallery URL
-            } else {
-                errorMsg.textContent = "Eaa.. Kamu Bukan Pemilik Akun!";
-            }
-        }
-    </script>
 </body>
