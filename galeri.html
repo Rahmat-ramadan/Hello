@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeri Foto</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px; /* Tambahkan padding di sini */
+            display: flex;
+            flex-direction: column; /* Ubah ke arah kolom */
+            align-items: center; /* Pusatkan item secara horizontal */
+            min-height: 100vh;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);
+            box-sizing: border-box; /* Pastikan padding termasuk dalam ukuran elemen */
+        }
+        h1 {
+            margin: 20px 0; /* Spasi atas dan bawah untuk judul */
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            font-size: 2.5em;
+            text-align: center;
+        }
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            box-sizing: border-box; /* Pastikan padding termasuk dalam ukuran elemen */
+        }
+        .gallery img {
+            max-width: 180px;
+            height: auto;
+            border: 4px solid #ffffff;
+            border-radius: 10px;
+            padding: 5px;
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        .gallery img:hover {
+            transform: scale(1.05);
+            border-color: #ff7e5f;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        /* Style untuk modal */
+        .modal {
+            display: none; /* Hidden secara default */
+            position: fixed; /* Tetap di layar */
+            z-index: 1; /* Diletakkan di atas konten lainnya */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto; /* Scroll jika diperlukan */
+            background-color: rgba(0, 0, 0, 0.8); /* Warna hitam dengan transparansi */
+            animation: fadeIn 0.5s;
+        }
+        @keyframes fadeIn {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+        }
+        .modal-content img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .add-photo {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .add-photo label {
+            background-color: #1a73e8;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .add-photo label:hover {
+            background-color: #0056b3;
+        }
+        .add-photo input[type="file"] {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Galeri Foto</h1>
+    <div class="gallery">
+        <img src="profile.jpg" alt="Profile Picture">
+        <img src="profile1.jpg" alt="Profile Picture 1">
+        <img src="profile2.jpg" alt="Profile Picture 2">
+        <img src="profile3.jpg" alt="Profile Picture 3">
+        <img src="profile4.jpg" alt="Profile Picture 4">
+        <img src="profile5.jpg" alt="Profile Picture 5">
+        <img src="profile6.jpg" alt="Profile Picture 6">
+        <img src="profile7.jpg" alt="Profile Picture 7">
+        <img src="profile8.jpg" alt="Profile Picture 8">
+        <img src="profile9.jpg" alt="Profile Picture 9">
+    </div>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+        <span class="close">&times;</span>
+        <div class="modal-content">
+            <img id="modal-img" src="">
+        </div>
+    </div>
+
+    <div class="add-photo">
+        <label for="file-upload">Tambah Foto</label>
+        <input type="file" id="file-upload" accept="image/*" onchange="addNewPhoto(event)">
+    </div>
+
+    <script>
+        // Get the modal
+        var modal = document.getElementById("myModal");
+
+        // Get the image and insert it inside the modal - use its "alt" text as a caption
+        var modalImg = document.getElementById("modal-img");
+        var images = document.querySelectorAll(".gallery img");
+        images.forEach(image => {
+            image.onclick = function() {
+                modal.style.display = "block";
+                modalImg.src = this.src;
+            }
+        });
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // Close the modal when clicking outside of the image
+        modal.onclick = function(event) {
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        // Function to handle adding new photo
+        function addNewPhoto(event) {
+            var file = event.target.files[0];
+            if (file) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    var newImg = document.createElement("img");
+                    newImg.src = e.target.result;
+                    newImg.alt = "Newly Added Image";
+                    newImg.className = "added-image";
+                    newImg.style.maxWidth = "180px";
+                    newImg.style.border = "4px solid #ffffff";
+                    newImg.style.borderRadius = "10px";
+                    newImg.style.padding = "5px";
+                    newImg.style.transition = "transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease";
+                    newImg.style.cursor = "pointer";
+                    newImg.onclick = function() {
+                        modal.style.display = "block";
+                        modalImg.src = this.src;
+                    }
+                    document.querySelector(".gallery").appendChild(newImg);
+                }
+                reader.readAsDataURL(file);
+            }
+        }
+    </script>
+</body>
+</html>

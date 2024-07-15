@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biodata</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+            background-color: #007BFF;
+            overflow: hidden;
+        }
+        .navbar a {
+            float: left;
+            display: block;
+            color: #fff;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+            line-height: 22px;
+        }
+        .navbar a:hover {
+            background-color: #0056b3;
+        }
+        .profile-pic-navbar {
+            float: right;
+            display: block;
+            margin: 7px 20px 7px 0;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .dropdown {
+            float: left;
+            overflow: hidden;
+        }
+        .dropdown .dropbtn {
+            font-size: 16px;
+            border: none;
+            outline: none;
+            color: white;
+            padding: 14px 20px;
+            background-color: inherit;
+            font-family: inherit;
+            margin: 0;
+        }
+        .navbar a:hover, .dropdown:hover .dropbtn {
+            background-color: #0056b3;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        .dropdown-content a {
+            float: none;
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background: #fff;
+            padding: 20px 40px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
+        h1 {
+            text-align: center;
+            color: #007BFF;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+        .profile-section {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+        .profile-pic {
+            display: block;
+            margin: 0 auto 20px;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .profile-text {
+            text-align: center;
+            font-size: 1.1em;
+            color: #333;
+        }
+        .section {
+            margin-bottom: 25px;
+        }
+        .section h2 {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            font-weight: 700;
+        }
+        .section p, .section ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        .section ul {
+            list-style-type: disc;
+        }
+        .section ul li {
+            margin: 5px 0;
+        }
+        .contact-info {
+            text-align: center;
+        }
+        .contact-info p {
+            font-size: 1.1em;
+            margin: 5px 0;
+        }
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 1; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            background-color: rgb(0,0,0); 
+            background-color: rgba(0,0,0,0.4); 
+            padding-top: 60px; 
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 400px;
+            border-radius: 10px;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .login-btn {
+            background-color: #007BFF;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            width: auto;
+            margin-top: 20px;
+        }
+        .login-btn:hover {
+            background-color: #0056b3;
+        }
+        .error-msg {
+            color: red;
+            margin-top: 10px;
+            text-align: center;
+        }
+        .modal-content div {
+            margin-bottom: 15px;
+        }
+        .modal-content label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .modal-content input {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 10px 20px;
+            }
+            .section h2 {
+                font-size: 1.2em;
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="#" id="openLoginModalCertificates">Dokumen</a>
+        <a href="#" id="openLoginModalGallery">Galeri</a>
+        <div class="dropdown">
+            <button class="dropbtn">Kontak 
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="https://wa.me/6289526260859" target="_blank">WhatsApp</a>
+                <a href="mailto:rahmatramadan077@gmail.com">Email</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>Rahmat Ramadan</h1>
+        
+        <div class="profile-section">
+            <img src="profile.jpg" alt="Foto Profil Rahmat Ramadan" class="profile-pic">
+            <p class="profile-text">
+                Halo! Saya Rahmat Ramadan, biasa dipanggil Rahmat, lahir Di Jakarta pada Tanggal 27 November 2002. Saya tinggal di daerah Koja, Jakarta Utara. Saya sangat menyukai desain, Diy dan menggambar manual, yang sering saya lakukan di waktu luang saya. Selain itu, saya juga suka berkreasi dengan kode program, khususnya dalam aplikasi Management Data berbasis java Netbeans dan pengembangan web . Berikut Rincian Profil Tentang Saya
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>Informasi Pribadi</h2>
+            <p><strong>Nama:</strong> Rahmat Ramadan</p>
+            <p><strong>Alamat:</strong> Jl.Walang, Koja, Jakarta Utara</p>
+            <p><strong>Tempat, Tanggal Lahir:</strong> Jakarta, 27 November 2002</p>
+        </div>
+
+        <div class="section">
+            <h2>Pendidikan</h2>
+            <p>SMK Jurusan Akuntansi</p>
+            <p>S1 Teknik Informatika</p>
+        </div>
+
+        <div class="section">
+            <h2>Pengalaman</h2>
+            <ul>
+                <li>Freelance PT.Indo Arsip</li>
+                <li>Fulltime Barista</li>
+                <li>Magang PT. Anugrah Textile</li>
+                <li>Membuat Project Pembuatan Aplikasi Manajemen Data dan menyimpan data di database Mysql</li>
+                <li>Membuat Project Website Catalog Penjualan</li>
+                <li>Membuat Project Website Untuk Manajemen Data dan menyimpan data di database Mysql</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Keahlian</h2>
+            <ul>
+                <li>HTML/CSS - Penguasaan dalam membuat dan menata halaman web</li>
+                <li>JavaScript - Kemampuan dalam membuat fungsi interaktif pada situs web</li>
+                <li>Java Netbeans - Membuat Aplikasi Management Data</li>
+                <li>Database Management - Pengetahuan tentang MySQL</li>
+                <li>Microsoft Office - Mampu Mengoperasikan Ms.Word, Ms.Excel, Ms.PowerPoint</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Hobi</h2>
+            <ul>
+                <li>Diy</li>
+                <li>Desain</li>
+                <li>Menggambar Manual</li>
+            </ul>
+        </div>
+
+        <div class="section contact-info">
+            <h2>Kontak</h2>
+            <p><strong>No HP:</strong> 089526260859</p>
+            <p><strong>Email:</strong> rahmatramadan077@gmail.com</p> 
+        </div>
+    </div>
+
+    <!-- Modal Login for Certificates -->
+    <div id="loginModalCertificates" class="modal">  
+        <div class="modal-content">
+            <span class="close" id="closeLoginModalCertificates">&times;</span>
+            <h2 style="text-align: center; color: #007BFF;">Login</h2>
+            <div>
+                <label for="usernameCertificates">Username:</label>
+                <input type="text" id="usernameCertificates" name="username" required>
+            </div>
+            <div>
+                <label for="passwordCertificates">Password:</label>
+                <input type="password" id="passwordCertificates" name="password" required>
+            </div>
+            <button class="login-btn" id="loginBtnCertificates">Login</button>
+            <div class="error-msg" id="errorMsgCertificates"></div>
+        </div>
+    </div>
+
+    <!-- Modal Login for Gallery -->
+    <div id="loginModalGallery" class="modal">  
+        <div class="modal-content">
+            <span class="close" id="closeLoginModalGallery">&times;</span>
+            <h2 style="text-align: center; color: #007BFF;">Login</h2>
+            <div>
+                <label for="usernameGallery">Username:</label>
+                <input type="text" id="usernameGallery" name="username" required>
+            </div>
+            <div>
+                <label for="passwordGallery">Password:</label>
+                <input type="password" id="passwordGallery" name="password" required>
+            </div>
+            <button class="login-btn" id="loginBtnGallery">Login</button>
+            <div class="error-msg" id="errorMsgGallery"></div>
+        </div>
+    </div>
+
+    <script>
+        // Get modal elements for certificates
+        var modalCertificates = document.getElementById("loginModalCertificates");
+        var btnCertificates = document.getElementById("openLoginModalCertificates");
+        var spanCertificates = document.getElementById("closeLoginModalCertificates");
+        var loginBtnCertificates = document.getElementById("loginBtnCertificates");
+        var errorMsgCertificates = document.getElementById("errorMsgCertificates");
+
+        // Open the modal for certificates
+        btnCertificates.onclick = function() {
+            modalCertificates.style.display = "block";
+        }
+
+        // Close the modal for certificates
+        spanCertificates.onclick = function() {
+            modalCertificates.style.display = "none";
+            errorMsgCertificates.textContent = ""; // Clear error message on close
+        }
+
+        // Close the modal when clicking outside of it for certificates
+        window.onclick = function(event) {
+            if (event.target == modalCertificates) {
+                modalCertificates.style.display = "none";
+                errorMsgCertificates.textContent = ""; // Clear error message on close
+            }
+        }
+
+        // Login button functionality for certificates
+        loginBtnCertificates.onclick = function() {
+            var username = document.getElementById("usernameCertificates").value;
+            var password = document.getElementById("passwordCertificates").value;
+
+            // Simple validation (replace with real authentication logic)
+            if (username === "rahmat" && password === "rahmat123") {
+                alert("Welcome Rahmat!");
+                modalCertificates.style.display = "none";
+                // Redirect to certificates or perform another action
+                window.location.href = "sertifikat.html"; // Update with actual certificates URL
+            } else {
+                errorMsgCertificates.textContent = "Eaa..NiceTry wkwk";
+            }
+        }
+
+        // Get modal elements for gallery
+        var modalGallery = document.getElementById("loginModalGallery");
+        var btnGallery = document.getElementById("openLoginModalGallery");
+        var spanGallery = document.getElementById("closeLoginModalGallery");
+        var loginBtnGallery = document.getElementById("loginBtnGallery");
+        var errorMsgGallery = document.getElementById("errorMsgGallery");
+
+        // Open the modal for gallery
+        btnGallery.onclick = function() {
+            modalGallery.style.display = "block";
+        }
+
+        // Close the modal for gallery
+        spanGallery.onclick = function() {
+            modalGallery.style.display = "none";
+            errorMsgGallery.textContent = ""; // Clear error message on close
+        }
+
+        // Close the modal when clicking outside of it for gallery
+        window.onclick = function(event) {
+            if (event.target == modalGallery) {
+                modalGallery.style.display = "none";
+                errorMsgGallery.textContent = ""; // Clear error message on close
+            }
+        }
+
+        // Login button functionality for gallery
+        loginBtnGallery.onclick = function() {
+            var username = document.getElementById("usernameGallery").value;
+            var password = document.getElementById("passwordGallery").value;
+
+            // Simple validation (replace with real authentication logic)
+            if (username === "rahmat" && password === "rahmat123") {
+                alert("Welcome Rahmat!");
+                modalGallery.style.display = "none";
+                // Redirect to gallery or perform another action
+                window.location.href = "galeri.html"; // Update with actual gallery URL
+            } else {
+                errorMsgGallery.textContent = "Eaa.. NiceTry wkwk";
+            }
+        }
+    </script>
+</body>
+</html>
